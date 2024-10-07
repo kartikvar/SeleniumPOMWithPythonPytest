@@ -26,6 +26,7 @@ class TestLoginPage:
     base_url = ReadConfiguration.get_application_url()
     username = ReadConfiguration.get_application_username()
     password = ReadConfiguration.get_application_password()
+    home_page_title = ReadConfiguration
 
     log = LogGeneration.logging()
 
@@ -46,7 +47,7 @@ class TestLoginPage:
         self.lp.click_sign_in_button()
 
         self.log.debug("Validating the title of the Home Page")
-        assert self.driver.title == "Home Page - PTC Inc. - Servigistics 141"
+        assert self.driver.title == "Home Page - PTC Inc. - Servigistics 14"
 
     def test_login_with_invalid_credentials(self, setup):
         self.driver = setup
@@ -58,5 +59,5 @@ class TestLoginPage:
         print("Invalid password from excel is --> {}".format(self.invalid_password))
         self.lp.click_sign_in_button()
 
-        assert self.lp.error_message() == "Invalid Sign in Name or Password"
+        assert self.lp.error_message() == "Invalid Sign in Name or Password1"
 

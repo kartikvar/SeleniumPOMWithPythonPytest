@@ -1,2 +1,0 @@
-Invalid username from excel is --> pricin
-Invalid password from excel is --> pricing

@@ -21,3 +21,8 @@ class ReadConfiguration:
     def get_application_password():
         password = config.get("credentials", "login_password")
         return password
+
+    @staticmethod
+    def get_title_name(page_title):
+        title = config.get("titles", page_title)
+        return title
