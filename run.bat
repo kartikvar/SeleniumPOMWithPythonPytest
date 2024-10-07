@@ -1,0 +1,1 @@
+pytest .\testCases\test_login_page.py -k test_login_with_valid_credentials --alluredir=AllureReport

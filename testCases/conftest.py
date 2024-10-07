@@ -1,6 +1,8 @@
 import os
 
+import allure
 import pytest
+from allure_commons.types import AttachmentType
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
@@ -27,3 +29,13 @@ def pytest_runtest_makereport(item, call):
     rep = outcome.get_result()
     setattr(item, "rep_" + rep.when, rep)
     return rep
+
+
+@pytest.yield_fixture
+def tear_down(request, setup):
+    driver = setup
+    yield
+    item = request.node
+    if item.rep_call.failed:
+        allure.attach(driver.get_screenshot_as_png(), name="screen_shot", attachment_type=AttachmentType.PNG)
+        driver.close()

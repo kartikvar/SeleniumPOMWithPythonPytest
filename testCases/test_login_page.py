@@ -9,6 +9,7 @@ from utilities.Custom_Logger import LogGeneration
 from utilities.ExcelUtilities import read_data_from_excel
 
 
+@pytest.mark.usefixtures("tear_down")
 class TestLoginPage:
 
     # @pytest.yield_fixture
@@ -21,8 +22,6 @@ class TestLoginPage:
 
     excel_path = ("D:\\Learn_SDET\\Selenium\\Selenium_Codes\\Selenium_Framework_Python_Pytest"
                   "\\SeleniumPOMWithPythonPytest\\TestData\\test_data.xlsx")
-    screenshot_path = ("D:\\Learn_SDET\\Selenium\\Selenium_Codes\\Selenium_Framework_Python_Pytest"
-                       "\\SeleniumPOMWithPythonPytest\\Screenshot\\screen_shot.png")
 
     base_url = ReadConfiguration.get_application_url()
     username = ReadConfiguration.get_application_username()
@@ -47,9 +46,7 @@ class TestLoginPage:
         self.lp.click_sign_in_button()
 
         self.log.debug("Validating the title of the Home Page")
-        assert self.driver.title == "Home Page - PTC Inc. - Servigistics 14"
-        # allure.attach(self.driver.save_screenshot(self.screenshot_path))
-        self.driver.save_screenshot(self.screenshot_path)
+        assert self.driver.title == "Home Page - PTC Inc. - Servigistics 141"
 
     def test_login_with_invalid_credentials(self, setup):
         self.driver = setup
